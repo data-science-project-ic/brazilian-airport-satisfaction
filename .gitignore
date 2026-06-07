@@ -219,3 +219,6 @@ __marimo__/
 
 # Ignorar bases de dados originais para não lotar o histórico do Git
 data/raw/*.csv
+*.csv
+*.png
+*.pkl
