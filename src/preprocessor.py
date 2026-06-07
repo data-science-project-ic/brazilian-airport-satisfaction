@@ -12,7 +12,9 @@ class DataPreprocessor:
         self.df = None
         
         # Garante que a pasta de saída existe
-        os.makedirs(os.path.dirname(self.output_path), exist_ok=True)
+        output_dir = os.path.dirname(self.output_path)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
         
     def load_data(self):
         """Carrega a base de dados."""
