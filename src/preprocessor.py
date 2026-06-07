@@ -87,9 +87,10 @@ class DataPreprocessor:
         if self.df is None:
             return
 
-        assert self.df.isnull().sum().sum() == 0, "Erro: Valores nulos remanescentes!"
-        assert self.df.select_dtypes(exclude=[np.number]).shape[1] == 0, "Erro: Colunas não numéricas remanescentes!"
-        
+        if self.df.isnull().sum().sum() != 0:
+            raise ValueError("Erro: Valores nulos remanescentes!")
+        if self.df.select_dtypes(exclude=[np.number]).shape[1] != 0:
+            raise ValueError("Erro: Colunas não numéricas remanescentes!")
         self.df.to_csv(self.output_path, index=False)
         print(f"Base processada, validada e exportada para: {self.output_path}\n")
 
