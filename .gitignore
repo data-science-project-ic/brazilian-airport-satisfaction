@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Ignorar bases de dados originais para não lotar o histórico do Git
+data/raw/*.csv

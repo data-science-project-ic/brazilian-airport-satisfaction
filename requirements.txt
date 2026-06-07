@@ -1,0 +1,5 @@
+# Lista de bibliotecas para o projeto
+# pandas
+# scikit-learn
+# matplotlib
+# seaborn
