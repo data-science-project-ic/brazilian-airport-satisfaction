@@ -61,7 +61,7 @@ class ModelTrainer:
         names = []
         
         for name, model in models.items():
-            cv_scores = cross_val_score(model, self.X_train, self.y_train, cv=5, scoring='accuracy', n_jobs=-1)
+            cv_scores = cross_val_score(model, self.X_train, self.y_train, cv=5, scoring='accuracy', n_jobs=1)
             results.append(cv_scores)
             names.append(name)
             print(f"[{name}] Acurácia Média CV: {cv_scores.mean():.4f} (+/- {cv_scores.std()*2:.4f})")
