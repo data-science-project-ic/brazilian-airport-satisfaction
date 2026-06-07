@@ -1,5 +1,7 @@
 # Lista de bibliotecas para o projeto
-# pandas
-# scikit-learn
-# matplotlib
-# seaborn
+pandas
+scikit-learn
+matplotlib
+seaborn
+xgboost
+lightgbm
