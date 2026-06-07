@@ -9,6 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 import xgboost as xgb
 import lightgbm as lgb
+import shap
 import joblib
 import os
 
@@ -114,7 +115,7 @@ class ModelTrainer:
         plt.close()
 
     def explain_and_export(self):
-        """Plota Feature Importance e salva o modelo no Joblib."""
+        """Plota Feature Importance, gera gráficos SHAP e salva o modelo no Joblib."""
         if hasattr(self.best_model, "feature_importances_"):
             importances = pd.Series(self.best_model.feature_importances_, index=self.X_train.columns)
             top_features = importances.sort_values(ascending=False).head(15)
@@ -127,6 +128,27 @@ class ModelTrainer:
             plt.tight_layout()
             plt.savefig(os.path.join(self.figures_dir, 'feature_importance.png'), dpi=300)
             plt.close()
+
+            # SHAP Values
+            print("\nGerando gráfico SHAP para explicabilidade...")
+            try:
+                explainer = shap.TreeExplainer(self.best_model)
+                shap_values = explainer.shap_values(self.X_test)
+                
+                # Para classificadores binários (como LightGBM), o shap_values pode vir como lista
+                if isinstance(shap_values, list) and len(shap_values) == 2:
+                    shap_values_to_plot = shap_values[1]
+                else:
+                    shap_values_to_plot = shap_values
+                    
+                plt.figure()
+                shap.summary_plot(shap_values_to_plot, self.X_test, show=False)
+                plt.tight_layout()
+                plt.savefig(os.path.join(self.figures_dir, 'shap_summary.png'), dpi=300, bbox_inches='tight')
+                plt.close()
+                print(f"Gráfico SHAP salvo em: {os.path.join(self.figures_dir, 'shap_summary.png')}")
+            except Exception as e:
+                print(f"Erro ao gerar gráficos SHAP: {e}")
         
         filename = self.best_model_name.lower().replace(' ', '_')
         model_path = os.path.join(self.models_dir, f'melhor_modelo_{filename}.pkl')
