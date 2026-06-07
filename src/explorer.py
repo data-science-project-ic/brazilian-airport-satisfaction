@@ -75,12 +75,14 @@ class DataExplorer:
 
         # Exemplo 2: Tipo de Voo
         if 'flight_type' in self.df.columns:
+            from matplotlib.ticker import FuncFormatter
+
             plt.figure(figsize=(8, 5))
             sns.barplot(data=self.df, x='flight_type', y='liked', hue='flight_type', errorbar=None, palette='viridis', legend=False)
             plt.title('Taxa de Satisfação por Tipo de Voo')
             plt.ylabel('Taxa de Aprovação')
             plt.ylim(0, 1)
-            plt.gca().yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: '{:.0%}'.format(y)))
+            plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda y, _: '{:.0%}'.format(y)))
             plt.tight_layout()
             plt.savefig(os.path.join(self.output_dir, 'satisfacao_por_tipo_voo.png'), dpi=300)
             plt.close()
