@@ -46,9 +46,13 @@ class DataPreprocessor:
         for col in self.df.columns:
             if self.df[col].isnull().any():
                 if pd.api.types.is_numeric_dtype(self.df[col]):
-                    self.df[col] = self.df[col].fillna(self.df[col].median())
+                    median = self.df[col].median()
+                    fill_value = median if not pd.isna(median) else 0
+                    self.df[col] = self.df[col].fillna(fill_value)
                 else:
-                    self.df[col] = self.df[col].fillna(self.df[col].mode()[0])
+                    modes = self.df[col].mode(dropna=True)
+                    fill_value = modes.iloc[0] if not modes.empty else 'unknown'
+                    self.df[col] = self.df[col].fillna(fill_value)
 
         nulos_finais = self.df.isnull().sum().sum()
         print(f"Nulos após o tratamento estrutural: {nulos_finais}")
