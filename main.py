@@ -1,12 +1,6 @@
-import sys
-import os
-
-# Adiciona o diretório src ao path do Python para permitir importações
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
-
-from explorer import DataExplorer
-from preprocessor import DataPreprocessor
-from modeler import ModelTrainer
+from src.explorer import DataExplorer
+from src.preprocessor import DataPreprocessor
+from src.modeler import ModelTrainer
 
 def main():
     print("Iniciando Pipeline de Satisfação de Passageiros do Aeroporto...\n")
