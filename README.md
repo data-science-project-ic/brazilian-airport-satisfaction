@@ -60,20 +60,13 @@ brazilian-airport-satisfaction/
 │       └── melhor_modelo_lightgbm.pkl # Modelo treinado serializado (joblib)
 │
 ├── docs/                             # Documentação completa do projeto
-│   ├── ANALYSIS_OVERVIEW.md          # Relatório técnico consolidado
-│   ├── PROJECT_DESCRIPTION.md        # Especificações da disciplina
 │   ├── INICIAL_PROPOSITION.md        # Proposta inicial (Parte 1 da entrega)
-│   ├── PITCH_SCRIPT.md              # Roteiro do pitch gerencial (5 min)
 │   ├── MONITORS_SUGESTION.md        # Diretrizes e sugestões do docente
-│   ├── TEX_PLAN.md                  # Plano de seções do artigo SBC
-│   ├── TEX_BACKLOG.md               # Backlog de tarefas do artigo
+│   ├── PROJECT_DESCRIPTION.md        # Especificações da disciplina
 │   └── tex/                          # Artigo científico em LaTeX (template SBC)
-│       ├── main.tex                  # Texto completo do artigo
-│       ├── sbc-template.bib          # Referências bibliográficas
-│       ├── sbc-template.sty          # Estilo SBC
-│       └── fig[1-5].*               # Figuras do artigo
 │
 ├── entregas_finais/                  # PDFs finais (Pitch + Relatório SBC)
+│   └── Artigo_Ciencia_de_Dados.pdf   # Artigo científico finalizado
 ├── main.py                          # Ponto de entrada — executa o pipeline completo
 ├── requirements.txt                 # Dependências do projeto
 └── README.md                        # Este arquivo
@@ -163,11 +156,11 @@ Siga a ordem numérica na pasta `notebooks/` para acompanhar a evolução da an�
 
 | Documento | Descrição |
 |---|---|
-| [Relatório Técnico](docs/ANALYSIS_OVERVIEW.md) | Visão completa do projeto: problema, dados, métodos, resultados e conclusões |
 | [Proposta Inicial](docs/INICIAL_PROPOSITION.md) | Definição da base e hipóteses (Parte 1 da entrega) |
-| [Roteiro do Pitch](docs/PITCH_SCRIPT.md) | Script para o pitch gerencial de 5 minutos |
-| [Plano do Artigo](docs/TEX_PLAN.md) | Estrutura de seções do artigo SBC com estimativas de páginas |
-| [Artigo LaTeX](docs/tex/main.tex) | Artigo científico completo no formato SBC |
+| [Especificações do Projeto](docs/PROJECT_DESCRIPTION.md) | Especificações da disciplina e diretrizes gerais |
+| [Sugestões dos Monitores](docs/MONITORS_SUGESTION.md) | Diretrizes e sugestões de melhorias |
+| [Artigo Final em PDF](entregas_finais/Artigo_Ciencia_de_Dados.pdf) | Artigo científico completo finalizado |
+| [Artigo LaTeX (Código)](docs/tex/) | Artigo científico completo no formato LaTeX (SBC) |
 
 ---
 
