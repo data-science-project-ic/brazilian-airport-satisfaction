@@ -1,8 +1,10 @@
 # Lista de bibliotecas para o projeto
-pandas
+pandas<3.0
+numpy
 scikit-learn
 matplotlib
 seaborn
 xgboost
 lightgbm
 shap
+joblib
